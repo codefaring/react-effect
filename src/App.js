@@ -1,25 +1,18 @@
-import logo from './logo.svg';
+import React, { useState } from 'react';
 import './App.css';
+import Products from './components/Products';
 
-function App() {
+export default function App() {
+  const [showProducts, setShowProducts] = useState(false);
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className='main'>
+      {showProducts && <Products />}
+      <button
+        className='button'
+        onClick={() => setShowProducts((show) => !show)}
+      >
+        {showProducts ? '제품 숨기기' : '제품 보기'}
+      </button>
     </div>
   );
 }
-
-export default App;
